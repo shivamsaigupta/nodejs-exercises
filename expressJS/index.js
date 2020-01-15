@@ -10,6 +10,10 @@ const app = express();
 // Set a static folder
 app.use(express.static(path.join(__dirname, "public")));
 
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // Members API routes
 app.use("/api/members", require("./routes/api/members"));
 
