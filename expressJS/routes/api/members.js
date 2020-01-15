@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const members = require("../../Members");
+const uuid = require("uuid/v4");
 
 // Get all members
 router.get("/", (req, res) => {
@@ -20,7 +21,7 @@ router.get("/:id", (req, res) => {
 // Create Member
 router.post("/", (req, res) => {
   const newMember = {
-    id: 5,
+    id: uuid(),
     name: req.body.name,
     phone: req.body.phone,
     status: "active"
@@ -31,6 +32,7 @@ router.post("/", (req, res) => {
 
   members.push(newMember);
   res.json(members);
+  //res.redirect("/");
 });
 
 // Update Member
